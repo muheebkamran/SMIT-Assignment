@@ -1,0 +1,75 @@
+body {
+  background: #f4f4f4;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 60px 20px;
+}
+
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.box {
+  width: 260px;
+  background: #fff;
+  border: 1px solid #000;
+  padding: 35px 25px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.box svg {
+  width: 45px;
+  height: 45px;
+  fill: #000;
+  margin-bottom: 20px;
+}
+
+.box h2 {
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin: 0 0 15px 0;
+}
+
+.box p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #333;
+  margin: 0 0 30px 0;
+}
+
+.box a {
+  display: block;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Pink middle card */
+.box.pink {
+  background: #e92063;
+  border-color: #e92063;
+  color: #fff;
+}
+
+.box.pink svg {
+  fill: #fff;
+}
+
+.box.pink p {
+  color: #fff;
+}
+
+.box.pink a {
+  background: #fff;
+  color: #e92063;
+}
