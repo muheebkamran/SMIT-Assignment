@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>20 CSS Responsive Navbar Designs - Pure HTML & CSS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* CSS Reset & Variables */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-dark-base: #070e28;
+      --cyan-bright: #38bdf8;
+      --cyan-glow: rgba(56, 189, 248, 0.4);
+      --glass-bg: rgba(255, 255, 255, 0.075);
+      --glass-border: rgba(255, 255, 255, 0.18);
+      --glass-border-hover: rgba(255, 255, 255, 0.28);
+      --glass-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.55), 
+                      inset 0 1px 1px rgba(255, 255, 255, 0.35), 
+                      inset 0 -1px 1px rgba(0, 0, 0, 0.2);
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.75);
+      --btn-grad: linear-gradient(98deg, #38bdf8 0%, #3b82f6 50%, #6366f1 100%);
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: var(--bg-dark-base);
+      background-image: 
+        radial-gradient(circle at 14% 30%, rgba(30, 64, 175, 0.55) 0%, transparent 45%),
+        radial-gradient(circle at 86% 22%, rgba(29, 78, 216, 0.42) 0%, transparent 42%),
+        radial-gradient(circle at 50% 55%, rgba(17, 24, 82, 0.6) 0%, transparent 65%),
+        radial-gradient(circle at 85% 85%, rgba(79, 70, 229, 0.28) 0%, transparent 45%),
+        linear-gradient(175deg, #09153e 0%, #060b24 50%, #030617 100%);
+      background-attachment: fixed;
+      font-family: var(--font-family);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 960px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 38px;
+    }
+
+    .headline {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      text-align: center;
+      line-height: 1.15;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      margin-bottom: 8px;
+      user-select: none;
+    }
+
+    .cyan-accent {
+      color: var(--cyan-bright);
+      font-weight: 900;
+      font-size: 1.1em;
+      margin-right: 6px;
+      text-shadow: 
+        0 0 20px rgba(56, 189, 248, 0.6),
+        0 0 45px rgba(56, 189, 248, 0.35);
+      display: inline-block;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-top: -24px;
+      margin-bottom: 4px;
+      text-align: center;
+    }
+
+    .glass-pill {
+      background: var(--glass-bg);
+      backdrop-filter: blur(28px) saturate(160%);
+      -webkit-backdrop-filter: blur(28px) saturate(160%);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      box-shadow: var(--glass-shadow);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .glass-pill:hover {
+      border-color: var(--glass-border-hover);
+      box-shadow: 
+        0 25px 48px -12px rgba(0, 0, 0, 0.65), 
+        0 0 24px rgba(56, 189, 248, 0.12),
+        inset 0 1px 1.5px rgba(255, 255, 255, 0.45);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+      user-select: none;
+    }
+
+    .brand-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #7dd3fc 0%, #38bdf8 35%, #2563eb 100%);
+      box-shadow: 
+        0 0 16px rgba(56, 189, 248, 0.75),
+        0 0 32px rgba(37, 99, 235, 0.45);
+      flex-shrink: 0;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .brand:hover .brand-dot {
+      transform: scale(1.1);
+    }
+
+    .brand-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .btn-signup {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 24px;
+      background: var(--btn-grad);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: none;
+      border-radius: 18px;
+      box-shadow: 
+        0 4px 16px rgba(56, 189, 248, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.4);
+      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, filter 0.25s ease;
+      cursor: pointer;
+      border: none;
+      user-select: none;
+    }
+
+    .btn-signup:hover {
+      transform: translateY(-1px) scale(1.02);
+      filter: brightness(1.1);
+      box-shadow: 
+        0 6px 22px rgba(56, 189, 248, 0.55),
+        inset 0 1px 1.5px rgba(255, 255, 255, 0.6);
+    }
+
+    .btn-signup:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
+    .desktop-nav-wrap {
+      width: 100%;
+      max-width: 860px;
+    }
+
+    .desktop-navbar {
+      height: 72px;
+      padding: 0 24px 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 36px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      transition: color 0.2s ease, text-shadow 0.2s ease;
+      position: relative;
+      padding: 6px 0;
+    }
+
+    .nav-link:hover {
+      color: #ffffff;
+      text-shadow: 0 0 14px rgba(255, 255, 255, 0.6);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: 100%;
+      height: 2px;
+      background: var(--cyan-bright);
+      border-radius: 2px;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-link:hover::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+
+    .mobile-nav-wrap {
+      width: 100%;
+      max-width: 340px;
+      position: relative;
+    }
+
+    .menu-toggle-input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+    }
+
+    .mobile-navbar {
+      height: 60px;
+      padding: 0 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hamburger-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      user-select: none;
+      border-radius: 12px;
+      padding: 8px;
+      transition: background-color 0.2s ease;
+    }
+
+    .hamburger-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .hamburger-line {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: #ffffff;
+      border-radius: 4px;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                  opacity 0.25s ease, 
+                  width 0.25s ease;
+      transform-origin: center;
+    }
+
+    .mobile-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      right: 0;
+      padding: 0 20px;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      pointer-events: none;
+      transform: translateY(-8px) scale(0.97);
+      transform-origin: top center;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                  opacity 0.3s ease, 
+                  transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  padding 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 5;
+    }
+
+    .mobile-dropdown .nav-links {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      width: 100%;
+    }
+
+    .mobile-dropdown .nav-link {
+      padding: 12px 6px;
+      font-size: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mobile-dropdown .nav-link:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-dropdown .btn-signup {
+      width: 100%;
+      text-align: center;
+      padding: 12px 20px;
+      margin-bottom: 6px;
+    }
+
+    .menu-toggle-input:checked ~ .mobile-dropdown {
+      max-height: 380px;
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+      padding: 18px 20px;
+    }
+
+    .menu-toggle-input:checked ~ .mobile-navbar .hamburger-line:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .menu-toggle-input:checked ~ .mobile-navbar .hamburger-line:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    .menu-toggle-input:checked ~ .mobile-navbar .hamburger-line:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .bar-caption {
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(56, 189, 248, 0.7);
+      margin-top: 10px;
+      font-family: monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 36px;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.4);
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav-wrap {
+        display: none;
+      }
+      .mobile-nav-wrap {
+        max-width: 100%;
+        width: 100%;
+      }
+      .headline {
+        font-size: 1.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    <h1 class="headline">
+      <span class="cyan-accent">20</span>CSS Responsive Navbar Designs
+    </h1>
+    <p class="subtitle">Pure HTML & CSS • Zero JavaScript</p>
+
+    <div class="desktop-nav-wrap">
+      <nav class="glass-pill desktop-navbar" aria-label="Desktop Showcase Navigation">
+        <a href="#home" class="brand">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span class="brand-name">Flow</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#product" class="nav-link">Product</a></li>
+          <li><a href="#docs" class="nav-link">Docs</a></li>
+          <li><a href="#blog" class="nav-link">Blog</a></li>
+        </ul>
+
+        <a href="#signup" class="btn-signup">Sign up</a>
+      </nav>
+      <div class="bar-caption">Desktop Breakpoint View</div>
+    </div>
+
+    <div class="mobile-nav-wrap">
+      <input type="checkbox" id="mobile-menu-toggle" class="menu-toggle-input" aria-label="Toggle mobile menu" />
+
+      <nav class="glass-pill mobile-navbar" aria-label="Mobile Showcase Navigation">
+        <a href="#home" class="brand">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span class="brand-name">Flow</span>
+        </a>
+
+        <label for="mobile-menu-toggle" class="hamburger-btn" title="Toggle Navigation Menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </label>
+      </nav>
+
+      <div class="glass-pill mobile-dropdown">
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#product" class="nav-link">Product</a></li>
+          <li><a href="#docs" class="nav-link">Docs</a></li>
+          <li><a href="#blog" class="nav-link">Blog</a></li>
+        </ul>
+        <a href="#signup" class="btn-signup">Sign up</a>
+      </div>
+
+      <div class="bar-caption">Mobile View (Click ☰ To Open Menu)</div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Frosted Glassmorphic Navbar • Pure HTML & CSS (0% JS)</p>
+  </footer>
+
+</body>
+</html>
