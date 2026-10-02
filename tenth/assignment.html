@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple YouTube Layout</title>
+  <style>
+    /* Basic Page Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+    }
+
+    /* Top Navigation Bar */
+    .header {
+      background-color: #ffffff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e5e5e5;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+    }
+
+    .logo {
+      font-weight: bold;
+      color: #ff0000;
+      font-size: 20px;
+    }
+
+    .logo span {
+      color: #606060;
+      font-size: 12px;
+      vertical-align: super;
+      margin-left: 2px;
+    }
+
+    .search-bar input {
+      width: 400px;
+      padding: 7px 10px;
+      border: 1px solid #ccc;
+      border-radius: 2px 0 0 2px;
+      outline: none;
+    }
+
+    .search-bar button {
+      padding: 7px 15px;
+      border: 1px solid #ccc;
+      border-left: none;
+      background-color: #f8f8f8;
+      cursor: pointer;
+    }
+
+    .user-icon {
+      background-color: #4a148c;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+    }
+
+    /* Main Content Layout Container */
+    .main-container {
+      display: flex;
+      margin-top: 50px;
+    }
+
+    /* Left Sidebar Navigation */
+    .sidebar {
+      width: 240px;
+      background-color: #ffffff;
+      height: calc(100vh - 50px);
+      position: fixed;
+      padding: 10px 0;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 10px 24px;
+      color: #030303;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .sidebar a:hover, .sidebar a.active {
+      background-color: #f2f2f2;
+    }
+
+    .sidebar .section-title {
+      padding: 10px 24px;
+      font-size: 12px;
+      color: #606060;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    /* Content Area on the Right */
+    .content-area {
+      margin-left: 240px;
+      flex: 1;
+      padding: 20px;
+    }
+
+    /* Topic Tag Selection Bar */
+    .tag-bar {
+      display: flex;
+      gap: 10px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #e5e5e5;
+      overflow-x: auto;
+    }
+
+    .tag {
+      background-color: #f2f2f2;
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 14px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .tag.active {
+      background-color: #030303;
+      color: #ffffff;
+    }
+
+    /* Video Feed Workspace Grid Layout */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      padding-top: 20px;
+    }
+
+    .video-card {
+      background-color: transparent;
+    }
+
+    .thumbnail {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-color: #ddd;
+      position: relative;
+      border-radius: 4px;
+    }
+
+    .duration {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background-color: rgba(0,0,0,0.8);
+      color: #fff;
+      font-size: 12px;
+      padding: 2px 4px;
+      border-radius: 2px;
+    }
+
+    .video-info {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .channel-pic {
+      width: 36px;
+      height: 36px;
+      background-color: #bbb;
+      border-radius: 50%;
+    }
+
+    .video-text {
+      flex: 1;
+    }
+
+    .video-title {
+      font-size: 14px;
+      font-weight: bold;
+      color: #030303;
+      margin-bottom: 4px;
+    }
+
+    .video-metadata {
+      font-size: 12px;
+      color: #606060;
+      line-height: 1.4;
+    }
+
+    .ad-label {
+      font-weight: bold;
+      color: #000;
+      margin-right: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <div class="header">
+    <div class="logo">YouTube<span>NG</span></div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search"><button>Q</button>
+    </div>
+    <div class="user-icon">C</div>
+  </div>
+
+  <div class="main-container">
+    <!-- Sidebar Links Section -->
+    <div class="sidebar">
+      <a href="#" class="active">Home</a>
+      <a href="#">Explore</a>
+      <a href="#">Subscriptions</a>
+      <hr style="border:0; border-top:1px solid #e5e5e5; margin:10px 0;">
+      <a href="#">Library</a>
+      <a href="#">History</a>
+      <a href="#">Your videos</a>
+      <a href="#">Watch later</a>
+      <a href="#">Liked videos</a>
+      <hr style="border:0; border-top:1px solid #e5e5e5; margin:10px 0;">
+      <div class="section-title">Subscriptions</div>
+      <a href="#">Music</a>
+      <a href="#">Sports</a>
+      <a href="#">Gaming</a>
+      <a href="#">News</a>
+    </div>
+
+    <!-- Main Dynamic Feed Window -->
+    <div class="content-area">
+      <!-- Tag Filter Blocks Bar -->
+      <div class="tag-bar">
+        <div class="tag active">All</div>
+        <div class="tag">Music</div>
+        <div class="tag">Mixes</div>
+        <div class="tag">User interface design</div>
+        <div class="tag">Nollywood</div>
+        <div class="tag">Logos</div>
+        <div class="tag">Graphic design</div>
+        <div class="tag">Website</div>
+      </div>
+
+      <!-- Videos Collection Blocks Layout Grid -->
+      <div class="video-grid">
+        
+        <!-- Video Unit Block 1 (Advertisement Example) -->
+        <div class="video-card">
+          <div class="thumbnail"></div>
+          <div class="video-info">
+            <div class="channel-pic"></div>
+            <div class="video-text">
+              <div class="video-title">4-Year Medical Doctor (MD) Degree in UK</div>
+              <div class="video-metadata">
+                <div><span class="ad-label">Ad</span>AUC School of Medicine</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Unit Block 2 -->
+        <div class="video-card">
+          <div class="thumbnail"><span class="duration">5:21</span></div>
+          <div class="video-info">
+            <div class="channel-pic"></div>
+            <div class="video-text">
+              <div class="video-title">UI Design Trends 2021</div>
+              <div class="video-metadata">
+                <div>DesignSense</div>
+                <div>521K views • 5 months ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Unit Block 3 -->
+        <div class="video-card">
+          <div class="thumbnail"><span class="duration">3:28</span></div>
+          <div class="video-info">
+            <div class="channel-pic"></div>
+            <div class="video-text">
+              <div class="video-title">Simi - Complete Me | Official Video</div>
+              <div class="video-metadata">
+                <div>X3M Music</div>
+                <div>3.7M views • 3 years ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Unit Block 4 -->
+        <div class="video-card">
+          <div class="thumbnail"><span class="duration">7:50</span></div>
+          <div class="video-info">
+            <div class="channel-pic"></div>
+            <div class="video-text">
+              <div class="video-title">Data Analyst Career Switch | How I Became a Data Analyst</div>
+              <div class="video-metadata">
+                <div>The Work Life Man</div>
+                <div>56K views • 1 month ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
