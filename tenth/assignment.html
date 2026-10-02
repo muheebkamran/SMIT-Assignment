@@ -2,318 +2,646 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple YouTube Layout</title>
+  <title>YouTube Clone</title>
   <style>
-    /* Basic Page Reset */
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
     }
 
     body {
+      font-family: "Roboto", "Segoe UI", Arial, sans-serif;
       background-color: #f9f9f9;
+      color: #030303;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
     }
 
-    /* Top Navigation Bar */
-    .header {
-      background-color: #ffffff;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #e5e5e5;
-      position: fixed;
+    /* ---------------- HEADER / NAVBAR ---------------- */
+    header {
+      position: sticky;
       top: 0;
-      left: 0;
-      width: 100%;
       z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      padding: 0 16px;
+      background: #ffffff;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .menu-icon {
+      width: 24px;
+      height: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .menu-icon span {
+      display: block;
+      height: 2px;
+      background-color: #606060;
+      border-radius: 1px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
     }
 
     .logo {
-      font-weight: bold;
-      color: #ff0000;
-      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 700;
+      font-size: 19px;
+      letter-spacing: -0.8px;
     }
 
-    .logo span {
+    .logo-icon {
+      width: 28px;
+      height: 20px;
+      background-color: #ff0000;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon::after {
+      content: "";
+      border-style: solid;
+      border-width: 4px 0 4px 8px;
+      border-color: transparent transparent transparent #ffffff;
+    }
+
+    .logo-region {
+      font-size: 10px;
       color: #606060;
-      font-size: 12px;
-      vertical-align: super;
-      margin-left: 2px;
+      font-weight: 500;
+      margin-top: -2px;
     }
 
-    .search-bar input {
-      width: 400px;
-      padding: 7px 10px;
+    /* Center Search Bar */
+    .header-center {
+      display: flex;
+      align-items: center;
+      flex: 0 1 720px;
+      margin: 0 40px;
+    }
+
+    .search-box {
+      display: flex;
+      flex: 1;
+      height: 38px;
+    }
+
+    .search-input {
+      width: 100%;
       border: 1px solid #ccc;
+      border-right: none;
+      padding: 0 12px;
+      font-size: 14px;
+      color: #606060;
+      background: #fff;
       border-radius: 2px 0 0 2px;
-      outline: none;
+      box-shadow: inset 0 1px 2px #eee;
     }
 
-    .search-bar button {
-      padding: 7px 15px;
+    .search-btn {
+      width: 64px;
       border: 1px solid #ccc;
-      border-left: none;
       background-color: #f8f8f8;
-      cursor: pointer;
+      border-radius: 0 2px 2px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .user-icon {
-      background-color: #4a148c;
-      color: white;
-      width: 30px;
-      height: 30px;
+    .search-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: #606060;
+    }
+
+    .mic-btn {
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      text-align: center;
-      line-height: 30px;
-      font-weight: bold;
+      background: transparent;
+      margin-left: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* Main Content Layout Container */
+    .mic-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: #606060;
+    }
+
+    /* Right Icons */
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .header-right svg {
+      width: 22px;
+      height: 22px;
+      fill: #606060;
+    }
+
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      background-color: #5b2282;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    /* ---------------- MAIN LAYOUT ---------------- */
     .main-container {
       display: flex;
-      margin-top: 50px;
+      flex: 1;
+      overflow: hidden;
     }
 
-    /* Left Sidebar Navigation */
-    .sidebar {
+    /* ---------------- SIDEBAR ---------------- */
+    aside {
       width: 240px;
       background-color: #ffffff;
-      height: calc(100vh - 50px);
-      position: fixed;
-      padding: 10px 0;
+      padding-top: 12px;
+      overflow-y: hidden;
+      border-right: 1px solid #e5e5e5;
+      flex-shrink: 0;
     }
 
-    .sidebar a {
-      display: block;
-      padding: 10px 24px;
-      color: #030303;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .sidebar a:hover, .sidebar a.active {
-      background-color: #f2f2f2;
-    }
-
-    .sidebar .section-title {
-      padding: 10px 24px;
-      font-size: 12px;
-      color: #606060;
-      text-transform: uppercase;
-      font-weight: bold;
-    }
-
-    /* Content Area on the Right */
-    .content-area {
-      margin-left: 240px;
-      flex: 1;
-      padding: 20px;
-    }
-
-    /* Topic Tag Selection Bar */
-    .tag-bar {
-      display: flex;
-      gap: 10px;
-      padding-bottom: 20px;
+    .nav-section {
+      padding-bottom: 8px;
       border-bottom: 1px solid #e5e5e5;
-      overflow-x: auto;
+      margin-bottom: 8px;
     }
 
-    .tag {
+    .nav-section-title {
+      padding: 8px 24px;
+      font-size: 13px;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: #606060;
+      letter-spacing: 0.2px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      height: 40px;
+      padding: 0 24px;
+      font-size: 14px;
+      color: #030303;
+    }
+
+    .nav-item.active {
       background-color: #f2f2f2;
+      font-weight: 500;
+    }
+
+    .nav-item.active svg {
+      fill: #ff0000;
+    }
+
+    .nav-item svg {
+      width: 20px;
+      height: 20px;
+      fill: #606060;
+      flex-shrink: 0;
+    }
+
+    /* ---------------- CONTENT AREA ---------------- */
+    main {
+      flex: 1;
+      overflow-y: auto;
+      background-color: #ffffff;
+    }
+
+    /* Chips / Categories Bar */
+    .chips-bar {
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      padding: 12px 24px;
+      display: flex;
+      gap: 12px;
+      border-bottom: 1px solid #e5e5e5;
+      z-index: 10;
+    }
+
+    .chip {
       padding: 6px 12px;
+      background-color: #f2f2f2;
+      border: 1px solid #dcdcdc;
       border-radius: 16px;
       font-size: 14px;
-      cursor: pointer;
       white-space: nowrap;
+      color: #030303;
     }
 
-    .tag.active {
+    .chip.active {
       background-color: #030303;
       color: #ffffff;
+      border-color: #030303;
     }
 
-    /* Video Feed Workspace Grid Layout */
+    /* Video Feed Grid */
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-      padding-top: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px 16px;
+      padding: 24px;
     }
 
     .video-card {
-      background-color: transparent;
+      display: flex;
+      flex-direction: column;
     }
 
-    .thumbnail {
+    .thumbnail-container {
+      position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
-      background-color: #ddd;
-      position: relative;
-      border-radius: 4px;
+      background-color: #e5e5e5;
+      border-radius: 0;
+      overflow: hidden;
     }
 
-    .duration {
+    .thumbnail-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .time-badge {
       position: absolute;
-      bottom: 8px;
-      right: 8px;
-      background-color: rgba(0,0,0,0.8);
+      bottom: 4px;
+      right: 4px;
+      background-color: rgba(0, 0, 0, 0.8);
       color: #fff;
       font-size: 12px;
-      padding: 2px 4px;
+      font-weight: 500;
+      padding: 1px 4px;
       border-radius: 2px;
     }
 
     .video-info {
-      margin-top: 10px;
       display: flex;
-      gap: 10px;
+      gap: 12px;
+      margin-top: 12px;
     }
 
-    .channel-pic {
+    .channel-avatar {
       width: 36px;
       height: 36px;
-      background-color: #bbb;
       border-radius: 50%;
+      background-color: #ddd;
+      overflow: hidden;
+      flex-shrink: 0;
     }
 
-    .video-text {
-      flex: 1;
+    .channel-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-details {
+      display: flex;
+      flex-direction: column;
+      font-size: 13px;
+      line-height: 1.35;
     }
 
     .video-title {
       font-size: 14px;
-      font-weight: bold;
+      font-weight: 500;
       color: #030303;
       margin-bottom: 4px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .channel-name {
+      color: #606060;
     }
 
     .video-metadata {
-      font-size: 12px;
       color: #606060;
-      line-height: 1.4;
     }
 
-    .ad-label {
-      font-weight: bold;
-      color: #000;
+    /* Ad Badge */
+    .ad-badge {
+      display: inline-block;
+      background-color: #fbc02d;
+      color: #fff;
+      font-weight: 700;
+      font-size: 10px;
+      padding: 0 3px;
+      border-radius: 2px;
       margin-right: 4px;
+      vertical-align: middle;
+    }
+
+    .ad-desc {
+      color: #606060;
+      font-size: 12px;
+      margin-top: 2px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Header Navigation -->
-  <div class="header">
-    <div class="logo">YouTube<span>NG</span></div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search"><button>Q</button>
+  <!-- Top Navigation Header -->
+  <header>
+    <div class="header-left">
+      <div class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="logo-container">
+        <div class="logo">
+          <div class="logo-icon"></div>
+          <span>YouTube</span>
+        </div>
+        <span class="logo-region">NG</span>
+      </div>
     </div>
-    <div class="user-icon">C</div>
-  </div>
 
+    <div class="header-center">
+      <div class="search-box">
+        <input type="text" class="search-input" value="Search" readonly>
+        <div class="search-btn">
+          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        </div>
+      </div>
+      <div class="mic-btn">
+        <svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/></svg>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+      <div class="user-avatar">C</div>
+    </div>
+  </header>
+
+  <!-- Content Structure -->
   <div class="main-container">
-    <!-- Sidebar Links Section -->
-    <div class="sidebar">
-      <a href="#" class="active">Home</a>
-      <a href="#">Explore</a>
-      <a href="#">Subscriptions</a>
-      <hr style="border:0; border-top:1px solid #e5e5e5; margin:10px 0;">
-      <a href="#">Library</a>
-      <a href="#">History</a>
-      <a href="#">Your videos</a>
-      <a href="#">Watch later</a>
-      <a href="#">Liked videos</a>
-      <hr style="border:0; border-top:1px solid #e5e5e5; margin:10px 0;">
-      <div class="section-title">Subscriptions</div>
-      <a href="#">Music</a>
-      <a href="#">Sports</a>
-      <a href="#">Gaming</a>
-      <a href="#">News</a>
-    </div>
-
-    <!-- Main Dynamic Feed Window -->
-    <div class="content-area">
-      <!-- Tag Filter Blocks Bar -->
-      <div class="tag-bar">
-        <div class="tag active">All</div>
-        <div class="tag">Music</div>
-        <div class="tag">Mixes</div>
-        <div class="tag">User interface design</div>
-        <div class="tag">Nollywood</div>
-        <div class="tag">Logos</div>
-        <div class="tag">Graphic design</div>
-        <div class="tag">Website</div>
+    <!-- Left Sidebar -->
+    <aside>
+      <div class="nav-section">
+        <div class="nav-item active">
+          <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          <span>Home</span>
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24"><path d="M12 10.9c-.61 0-1.1.49-1.1 1.1s.49 1.1 1.1 1.1c.61 0 1.1-.49 1.1-1.1s-.49-1.1-1.1-1.1zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm2.19 12.19L6 18l3.81-8.19L18 6l-3.81 8.19z"/></svg>
+          <span>Explore</span>
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24"><path d="M18.7 8.7H5.3V7h13.4v1.7zm1.8-3.7H3.5V3.3h17V5zM20 10.3H4c-.6 0-1 .4-1 1v9.3c0 .6.4 1 1 1h16c.6 0 1-.4 1-1v-9.3c0-.6-.4-1-1-1zm-8 7.3v-5.3l4.7 2.7-4.7 2.6z"/></svg>
+          <span>Subscriptions</span>
+        </div>
       </div>
 
-      <!-- Videos Collection Blocks Layout Grid -->
+      <div class="nav-section">
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8 12.5v-9l6 4.5-6 4.5z"/></svg>
+          <span>Library</span>
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
+          <span>History</span>
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24"><path d="M10 8v8l5-4-5-4zm9-5H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/></svg>
+          <span>Your videos</span>
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+          <span>Watch later</span>
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+          <span>Liked videos</span>
+        </div>
+      </div>
+
+      <div class="nav-section-title">Subscriptions</div>
+      <div class="nav-item">
+        <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+        <span>Music</span>
+      </div>
+      <div class="nav-item">
+        <svg viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg>
+        <span>Sports</span>
+      </div>
+      <div class="nav-item">
+        <svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+        <span>Gaming</span>
+      </div>
+      <div class="nav-item">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/></svg>
+        <span>News</span>
+      </div>
+    </aside>
+
+    <!-- Main Video Section -->
+    <main>
+      <!-- Horizontal Filter Chips -->
+      <div class="chips-bar">
+        <span class="chip active">All</span>
+        <span class="chip">Music</span>
+        <span class="chip">Mixes</span>
+        <span class="chip">User interface design</span>
+        <span class="chip">Nollywood</span>
+        <span class="chip">Logos</span>
+        <span class="chip">Graphic design</span>
+        <span class="chip">Website</span>
+        <span class="chip">Computer Science</span>
+        <span class="chip">Contemporary</span>
+      </div>
+
+      <!-- Video Cards Grid -->
       <div class="video-grid">
-        
-        <!-- Video Unit Block 1 (Advertisement Example) -->
+        <!-- Card 1 (Ad) -->
         <div class="video-card">
-          <div class="thumbnail"></div>
+          <div class="thumbnail-container">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=500&q=80" alt="Doctor Degree">
+          </div>
           <div class="video-info">
-            <div class="channel-pic"></div>
-            <div class="video-text">
+            <div class="video-details">
               <div class="video-title">4-Year Medical Doctor (MD) Degree in UK</div>
-              <div class="video-metadata">
-                <div><span class="ad-label">Ad</span>AUC School of Medicine</div>
+              <div class="ad-desc">Ready to start med school? AUC has a 92% first-time residency rate for 2019-2...</div>
+              <div style="margin-top: 4px;">
+                <span class="ad-badge">Ad</span>
+                <span class="channel-name">AUC School of Medicine</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Video Unit Block 2 -->
+        <!-- Card 2 -->
         <div class="video-card">
-          <div class="thumbnail"><span class="duration">5:21</span></div>
+          <div class="thumbnail-container">
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=500&q=80" alt="UI Design Trends 2021">
+            <div class="time-badge">5:21</div>
+          </div>
           <div class="video-info">
-            <div class="channel-pic"></div>
-            <div class="video-text">
+            <div class="channel-avatar">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="DesignSense">
+            </div>
+            <div class="video-details">
               <div class="video-title">UI Design Trends 2021</div>
-              <div class="video-metadata">
-                <div>DesignSense</div>
-                <div>521K views • 5 months ago</div>
-              </div>
+              <div class="channel-name">DesignSense</div>
+              <div class="video-metadata">521K views • 5 months ago</div>
             </div>
           </div>
         </div>
 
-        <!-- Video Unit Block 3 -->
+        <!-- Card 3 -->
         <div class="video-card">
-          <div class="thumbnail"><span class="duration">3:28</span></div>
+          <div class="thumbnail-container">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80" alt="Simi - Complete Me">
+            <div class="time-badge">3:28</div>
+          </div>
           <div class="video-info">
-            <div class="channel-pic"></div>
-            <div class="video-text">
+            <div class="channel-avatar">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="X3M Music">
+            </div>
+            <div class="video-details">
               <div class="video-title">Simi - Complete Me | Official Video</div>
-              <div class="video-metadata">
-                <div>X3M Music</div>
-                <div>3.7M views • 3 years ago</div>
-              </div>
+              <div class="channel-name">X3M Music</div>
+              <div class="video-metadata">3.7M views • 3 years ago</div>
             </div>
           </div>
         </div>
 
-        <!-- Video Unit Block 4 -->
+        <!-- Card 4 -->
         <div class="video-card">
-          <div class="thumbnail"><span class="duration">7:50</span></div>
+          <div class="thumbnail-container">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=500&q=80" alt="Data Analyst">
+            <div class="time-badge">7:50</div>
+          </div>
           <div class="video-info">
-            <div class="channel-pic"></div>
-            <div class="video-text">
-              <div class="video-title">Data Analyst Career Switch | How I Became a Data Analyst</div>
-              <div class="video-metadata">
-                <div>The Work Life Man</div>
-                <div>56K views • 1 month ago</div>
-              </div>
+            <div class="channel-avatar">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="The Work Life Man">
+            </div>
+            <div class="video-details">
+              <div class="video-title">Data Analyst Career Switch | How I Became a Data...</div>
+              <div class="channel-name">The Work Life Man</div>
+              <div class="video-metadata">56K views • 1 month ago</div>
             </div>
           </div>
         </div>
 
+        <!-- Card 5 -->
+        <div class="video-card">
+          <div class="thumbnail-container">
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=500&q=80" alt="Stubborn Billionaires">
+            <div class="time-badge">4:38:36</div>
+          </div>
+          <div class="video-info">
+            <div class="channel-avatar">
+              <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=100&q=80" alt="Nollywood">
+            </div>
+            <div class="video-details">
+              <div class="video-title">STUBBORN BILLIONAIRES Complete (UGEZU New Hi...</div>
+              <div class="channel-name">Nollywood RealnollyTV</div>
+              <div class="video-metadata">114K views • 2 days ago</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="video-card">
+          <div class="thumbnail-container">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=500&q=80" alt="TGIF Show">
+            <div class="time-badge">13:04</div>
+          </div>
+          <div class="video-info">
+            <div class="channel-avatar">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80" alt="NdaniTV">
+            </div>
+            <div class="video-details">
+              <div class="video-title">Linda Osifo and Olakira on the NdaniTGIFShow</div>
+              <div class="channel-name">NdaniTV</div>
+              <div class="video-metadata">83K views • 4 days ago</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="video-card">
+          <div class="thumbnail-container">
+            <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=500&q=80" alt="Brand Identity Design">
+            <div class="time-badge">1:56:50</div>
+          </div>
+          <div class="video-info">
+            <div class="channel-avatar">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80" alt="Satori Graphics">
+            </div>
+            <div class="video-details">
+              <div class="video-title">Designing a Complete Brand Identity with Sydne...</div>
+              <div class="channel-name">Satori Graphics</div>
+              <div class="video-metadata">48K views • 2 weeks ago</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="video-card">
+          <div class="thumbnail-container">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=500&q=80" alt="Mistakes Ladies Make">
+            <div class="time-badge">17:36</div>
+          </div>
+          <div class="video-info">
+            <div class="channel-avatar">
+              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=100&q=80" alt="Kingsley Okonkwo">
+            </div>
+            <div class="video-details">
+              <div class="video-title">7 Mistakes Ladies Make When They Like a Guy | ...</div>
+              <div class="channel-name">Kingsley Okonkwo</div>
+              <div class="video-metadata">92K views • 1 year ago</div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </main>
   </div>
 
 </body>
