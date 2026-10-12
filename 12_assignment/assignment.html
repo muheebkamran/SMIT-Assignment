@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industry - We’re Your Industrial Solution</title>
+  <!-- Google Fonts: Poppins and Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --primary-yellow: #f8b600;
+      --primary-yellow-hover: #e0a500;
+      --text-dark: #222222;
+      --text-muted: #777777;
+      --text-light: #eeeeee;
+      --bg-dark: #0b0c10;
+      --bg-light: #f9f9ff;
+      --border-color: #e5e7eb;
+      --font-heading: 'Poppins', sans-serif;
+      --font-body: 'Roboto', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-muted);
+      background-color: #ffffff;
+      line-height: 1.6;
+      font-size: 14px;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1170px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .btn-yellow {
+      display: inline-block;
+      background-color: var(--primary-yellow);
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 13px 32px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .btn-yellow:hover {
+      background-color: var(--primary-yellow-hover);
+      color: #ffffff;
+      box-shadow: 0 5px 15px rgba(248, 182, 0, 0.35);
+    }
+
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      color: var(--text-dark);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 14px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .top-bar {
+      background-color: #04091e;
+      color: #cccccc;
+      font-size: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .top-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .top-social {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .top-social a {
+      color: #cccccc;
+      font-size: 13px;
+    }
+
+    .top-social a:hover {
+      color: var(--primary-yellow);
+    }
+
+    .top-contact {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .top-contact a {
+      color: #cccccc;
+    }
+
+    .top-contact a:hover {
+      color: var(--primary-yellow);
+    }
+
+    /* Main Navigation */
+    .main-nav-wrapper {
+      background-color: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-text {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 800;
+      color: #222222;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links li a {
+      font-family: var(--font-heading);
+      font-size: 12.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #222222;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li.active a {
+      color: var(--primary-yellow);
+    }
+
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      min-width: 180px;
+      padding: 10px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      border-top: 2px solid var(--primary-yellow);
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu li a {
+      padding: 8px 18px;
+      font-size: 12px;
+      text-transform: capitalize;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 22px;
+      color: #222222;
+      cursor: pointer;
+    }
+
+    .hero-section {
+      position: relative;
+      background: url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1920&q=80') center center/cover no-repeat;
+      padding: 180px 0 160px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(4, 9, 30, 0.72);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      opacity: 0.9;
+      font-weight: 500;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 35px;
+      color: #dddddd;
+      font-weight: 300;
+    }
+
+    .triad-section {
+      padding: 90px 0;
+      background-color: #ffffff;
+    }
+
+    .triad-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .triad-card {
+      text-align: center;
+      padding: 20px 25px;
+      transition: all 0.3s ease;
+    }
+
+    .triad-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .triad-icon-wrap {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 25px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hexagon-svg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      stroke: #d8d8d8;
+      stroke-width: 1.5;
+      fill: transparent;
+      transition: stroke 0.3s ease;
+    }
+
+    .triad-card:hover .hexagon-svg {
+      stroke: var(--primary-yellow);
+    }
+
+    .triad-icon {
+      font-size: 24px;
+      color: #666666;
+      transition: color 0.3s ease;
+    }
+
+    .triad-card:hover .triad-icon {
+      color: var(--primary-yellow);
+    }
+
+    .triad-title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 15px;
+    }
+
+    .triad-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .about-quote-section {
+      background-color: var(--bg-light);
+      padding: 100px 0;
+    }
+
+    .about-quote-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-tag {
+      font-family: var(--font-heading);
+      color: var(--primary-yellow);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    .about-title {
+      font-family: var(--font-heading);
+      font-size: 38px;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.25;
+      margin-bottom: 15px;
+    }
+
+    .about-subtitle {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 500;
+      color: #444444;
+      margin-bottom: 20px;
+    }
+
+    .about-text {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    /* Quote Box */
+    .quote-box {
+      background-color: #ffffff;
+      padding: 40px 35px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      border-radius: 4px;
+      border-top: 4px solid var(--primary-yellow);
+    }
+
+    .quote-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 22px;
+      text-align: center;
+    }
+
+    .quote-form .form-group {
+      margin-bottom: 18px;
+    }
+
+    .quote-form select,
+    .quote-form input,
+    .quote-form textarea {
+      width: 100%;
+      padding: 13px 15px;
+      border: 1px solid #e1e1e1;
+      border-radius: 3px;
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      color: #444444;
+      background-color: #fafafa;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .quote-form select:focus,
+    .quote-form input:focus,
+    .quote-form textarea:focus {
+      border-color: var(--primary-yellow);
+      background-color: #ffffff;
+    }
+
+    .quote-form .btn-yellow {
+      width: 100%;
+      padding: 14px;
+      font-size: 14px;
+    }
+
+    .form-alert {
+      display: none;
+      margin-top: 15px;
+      padding: 10px;
+      background: #e6f9ed;
+      color: #1e7e34;
+      font-size: 12.5px;
+      border-radius: 3px;
+      text-align: center;
+    }
+
+    /* Core Market Sectors */
+    .sectors-section {
+      padding: 100px 0;
+      background-color: #ffffff;
+    }
+
+    .sectors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .sector-card {
+      background: #ffffff;
+      border: 1px solid #eeeeee;
+      border-radius: 4px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .sector-card:hover {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      transform: translateY(-5px);
+    }
+
+    .sector-img {
+      height: 220px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .sector-body {
+      padding: 25px 20px;
+    }
+
+    .sector-name {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .sector-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Fun Facts / Counters */
+    .counters-section {
+      background: #04091e;
+      padding: 70px 0;
+      color: #ffffff;
+    }
+
+    .counters-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .counter-item h2 {
+      font-family: var(--font-heading);
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--primary-yellow);
+      margin-bottom: 5px;
+    }
+
+    .counter-item p {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    /* Finished Projects */
+    .projects-section {
+      padding: 100px 0;
+      background: var(--bg-light);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .project-card {
+      position: relative;
+      height: 260px;
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(4, 9, 30, 0.8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: all 0.3s ease;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+
+    .project-overlay h4 {
+      font-family: var(--font-heading);
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .project-overlay p {
+      color: var(--primary-yellow);
+      font-size: 13px;
+    }
+
+    /* Testimonials */
+    .testimonials-section {
+      padding: 100px 0;
+      background: #ffffff;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .testimonial-card {
+      background: #ffffff;
+      border: 1px solid #eeeeee;
+      padding: 35px 25px;
+      border-radius: 4px;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    }
+
+    .client-name {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .client-quote {
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .quote-icon {
+      color: var(--primary-yellow);
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    /* Blog Section */
+    .blog-section {
+      padding: 100px 0;
+      background: var(--bg-light);
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .blog-card {
+      background: #ffffff;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s ease;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .blog-img {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .blog-body {
+      padding: 25px 20px;
+    }
+
+    .blog-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .blog-meta span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .blog-title {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dark);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .blog-title a:hover {
+      color: var(--primary-yellow);
+    }
+
+    .blog-excerpt {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #04091e;
+      color: #999999;
+      padding: 80px 0 30px;
+      font-size: 13px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 2fr 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .footer-col p {
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 380px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 15px;
+      border: none;
+      background: #191f3a;
+      color: #ffffff;
+      font-size: 13px;
+      outline: none;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .newsletter-form button {
+      background: var(--primary-yellow);
+      color: #ffffff;
+      border: none;
+      padding: 0 18px;
+      cursor: pointer;
+      border-radius: 0 3px 3px 0;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+
+    .newsletter-form button:hover {
+      background: var(--primary-yellow-hover);
+    }
+
+    .footer-social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .footer-social-icons a {
+      width: 36px;
+      height: 36px;
+      background: #191f3a;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 3px;
+      transition: all 0.3s;
+    }
+
+    .footer-social-icons a:hover {
+      background: var(--primary-yellow);
+      color: #ffffff;
+    }
+
+    .copyright-wrap {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-size: 13px;
+    }
+
+    .copyright-wrap a {
+      color: var(--primary-yellow);
+    }
+
+    @media (max-width: 991px) {
+      .triad-grid,
+      .sectors-grid,
+      .projects-grid,
+      .testimonials-grid,
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .about-quote-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .counters-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+      .hero-title {
+        font-size: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 25px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        gap: 15px;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .triad-grid,
+      .sectors-grid,
+      .projects-grid,
+      .testimonials-grid,
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: 32px;
+      }
+      .counters-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <div class="container">
+      <div class="top-social">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="Dribbble"><i class="fa-brands fa-dribbble"></i></a>
+        <a href="#" aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
+      </div>
+      <div class="top-contact">
+        <a href="tel:+15550142290"><i class="fa-solid fa-phone"></i> +1 (555) 014-2290</a>
+        <a href="mailto:hello@example.com"><i class="fa-solid fa-envelope"></i> hello@example.com</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Navigation -->
+  <div class="main-nav-wrapper">
+    <div class="container">
+      <nav class="main-nav">
+        <!-- Logo -->
+        <a href="#home" class="logo-container">
+          <div class="logo-icon">
+            <!-- Custom Yellow Industrial Icon SVG matching screenshot -->
+            <svg viewBox="0 0 40 40" width="36" height="36" fill="none">
+              <ellipse cx="20" cy="20" rx="9" ry="17" fill="#f8b600"/>
+              <ellipse cx="12" cy="20" rx="5" ry="12" fill="#e0a500"/>
+              <ellipse cx="28" cy="20" rx="5" ry="12" fill="#e0a500"/>
+            </svg>
+          </div>
+          <span class="logo-text">Industry</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <ul class="nav-links" id="navLinks">
+          <li class="active"><a href="#home">HOME</a></li>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#service">SERVICE</a></li>
+          <li><a href="#projects">PROJECTS</a></li>
+          <li class="nav-dropdown">
+            <a href="#blog">BLOG <i class="fa-solid fa-angle-down" style="font-size: 10px;"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="#blog">Blog Home</a></li>
+              <li><a href="#blog">Blog Single</a></li>
+            </ul>
+          </li>
+          <li><a href="#contact">CONTACT</a></li>
+          <li><a href="#quote">ELEMENTS</a></li>
+        </ul>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-btn" id="mobileToggle" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-subtitle">DON’T LOOK FURTHER, HERE IS THE KEY</p>
+        <h1 class="hero-title">We’re Your Industrial Solution</h1>
+        <p class="hero-desc">
+          Engineering, construction and maintenance for factories, warehouses and utility plants, delivered safely, on time and to specification.
+        </p>
+        <a href="#quote" class="btn-yellow">GET STARTED</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Cards Triad -->
+  <section class="triad-section" id="service">
+    <div class="container">
+      <div class="triad-grid">
+        <!-- Maintenance -->
+        <div class="triad-card">
+          <div class="triad-icon-wrap">
+            <svg class="hexagon-svg" viewBox="0 0 100 115">
+              <polygon points="50 3, 97 28, 97 86, 50 112, 3 86, 3 28"/>
+            </svg>
+            <i class="fa-solid fa-wand-magic-sparkles triad-icon"></i>
+          </div>
+          <h3 class="triad-title">Maintenance</h3>
+          <p class="triad-desc">
+            Planned and emergency maintenance for pumps, valves, conveyors and electrical systems, so your production lines keep running.
+          </p>
+        </div>
+
+        <!-- Residential Service -->
+        <div class="triad-card">
+          <div class="triad-icon-wrap">
+            <svg class="hexagon-svg" viewBox="0 0 100 115">
+              <polygon points="50 3, 97 28, 97 86, 50 112, 3 86, 3 28"/>
+            </svg>
+            <i class="fa-solid fa-rocket triad-icon"></i>
+          </div>
+          <h3 class="triad-title">Residential Service</h3>
+          <p class="triad-desc">
+            Heating, plumbing and electrical upgrades for apartment blocks and housing projects, carried out safely and to code.
+          </p>
+        </div>
+
+        <!-- Commercial Service -->
+        <div class="triad-card">
+          <div class="triad-icon-wrap">
+            <svg class="hexagon-svg" viewBox="0 0 100 115">
+              <polygon points="50 3, 97 28, 97 86, 50 112, 3 86, 3 28"/>
+            </svg>
+            <i class="fa-solid fa-bug triad-icon"></i>
+          </div>
+          <h3 class="triad-title">Commercial Service</h3>
+          <p class="triad-desc">
+            Fit-outs, HVAC and power distribution for offices, retail units and warehouses, planned around your opening hours.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About & Quote Request Section -->
+  <section class="about-quote-section" id="about">
+    <div class="container">
+      <div class="about-quote-grid">
+        <!-- About Left -->
+        <div class="about-content">
+          <span class="about-tag">Engineering partners since 1998</span>
+          <h2 class="about-title">We build what keeps<br>industry moving</h2>
+          <h4 class="about-subtitle">We are here to listen to you and deliver excellence</h4>
+          <p class="about-text">
+            For more than twenty years we have designed, built and maintained the places where things are made: factories, warehouses, workshops and utility plants. Our engineers, site managers and technicians work as one team from the first survey to the final handover, so you deal with one contractor, one schedule and one point of contact. Every project is planned around safety, quality and the hours your business needs to keep running.
+          </p>
+          <a href="#contact" class="btn-yellow">Get Started Now</a>
+        </div>
+
+        <!-- Quote Form Right -->
+        <div class="quote-box" id="quote">
+          <h3 class="quote-title">Request a Quote</h3>
+          <form class="quote-form" onsubmit="handleQuoteSubmit(event)">
+            <div class="form-group">
+              <select required>
+                <option value="" disabled selected>Select Service</option>
+                <option value="Maintenance">Maintenance</option>
+                <option value="Residential Service">Residential Service</option>
+                <option value="Commercial Service">Commercial Service</option>
+                <option value="Industrial Engineering">Industrial Engineering</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Email Address" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" placeholder="Phone Number" required>
+            </div>
+            <div class="form-group">
+              <textarea rows="3" placeholder="Project Description"></textarea>
+            </div>
+            <button type="submit" class="btn-yellow">Request Free Quote</button>
+            <div class="form-alert" id="quoteAlert">Thank you! Your quote request has been received.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Market Sectors -->
+  <section class="sectors-section">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">Our Core Market Sectors</h2>
+        <p class="section-subtitle">The industries we have served for more than twenty years.</p>
+      </div>
+
+      <div class="sectors-grid">
+        <!-- Automotive Engineering -->
+        <div class="sector-card">
+          <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=700&q=80" alt="Automotive Engineering" class="sector-img">
+          <div class="sector-body">
+            <h3 class="sector-name">Automotive Engineering</h3>
+            <p class="sector-desc">
+              Assembly lines, paint shops and test cells for vehicle and parts makers, from layout to commissioning.
+            </p>
+          </div>
+        </div>
+
+        <!-- Construction & Engineering -->
+        <div class="sector-card">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=700&q=80" alt="Construction & Engineering" class="sector-img">
+          <div class="sector-body">
+            <h3 class="sector-name">Construction & Engineering</h3>
+            <p class="sector-desc">
+              Steel structures, foundations and site services for plants, depots and logistics centres.
+            </p>
+          </div>
+        </div>
+
+        <!-- Industrial Engineering -->
+        <div class="sector-card">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80" alt="Industrial Engineering" class="sector-img">
+          <div class="sector-body">
+            <h3 class="sector-name">Industrial Engineering</h3>
+            <p class="sector-desc">
+              Process piping, tanks and utilities for food, chemical and pharmaceutical production.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fun Facts / Counters -->
+  <section class="counters-section">
+    <div class="container">
+      <div class="counters-grid">
+        <div class="counter-item">
+          <h2>2K+</h2>
+          <p>Projects Completed</p>
+        </div>
+        <div class="counter-item">
+          <h2>5.5K</h2>
+          <p>Total Employees</p>
+        </div>
+        <div class="counter-item">
+          <h2>959</h2>
+          <p>Happy Clients</p>
+        </div>
+        <div class="counter-item">
+          <h2>367</h2>
+          <p>Service Calls Answered</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Finished Projects -->
+  <section class="projects-section" id="projects">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">Latest Finished Projects</h2>
+        <p class="section-subtitle">Recent work for plants, warehouses and workshops.</p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="Finished Project 1">
+          <div class="project-overlay">
+            <h4>High-Precision Turbine Assembly</h4>
+            <p>Maintenance & Mechanical</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18615f8?auto=format&fit=crop&w=600&q=80" alt="Finished Project 2">
+          <div class="project-overlay">
+            <h4>Steel Frame Logistics Depots</h4>
+            <p>Structural Engineering</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80" alt="Finished Project 3">
+          <div class="project-overlay">
+            <h4>Process Piping Overhaul</h4>
+            <p>Industrial Utilities</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feedback / Testimonials -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">Enjoy our Clients’ Feedback</h2>
+        <p class="section-subtitle">Plant managers and site owners on working with us.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <!-- Fannie Rowe -->
+        <div class="testimonial-card">
+          <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <h4 class="client-name">Fannie Rowe</h4>
+          <p class="client-quote">
+            “They rebuilt our packaging line over a single weekend shutdown. The crew was on time, the site was clean, and production restarted on Monday morning exactly as promised.”
+          </p>
+        </div>
+
+        <!-- Marcus Hale -->
+        <div class="testimonial-card">
+          <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <h4 class="client-name">Marcus Hale</h4>
+          <p class="client-quote">
+            “Clear quotes, a dedicated project lead and a short progress report every week. Our new warehouse racking and lighting were finished two weeks ahead of schedule.”
+          </p>
+        </div>
+
+        <!-- Priya Nolan -->
+        <div class="testimonial-card">
+          <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <h4 class="client-name">Priya Nolan</h4>
+          <p class="client-quote">
+            “Their maintenance team answers at any hour. When a boiler pump failed in the night, an engineer was on site within ninety minutes and the plant never stopped.”
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="blog-section" id="blog">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">Latest Posts From Our Blog</h2>
+        <p class="section-subtitle">News, guides and lessons learned from our engineers and site crews.</p>
+      </div>
+
+      <div class="blog-grid">
+        <!-- Blog 1 -->
+        <div class="blog-card">
+          <img src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80" alt="Stainless Process Lines" class="blog-img">
+          <div class="blog-body">
+            <div class="blog-meta">
+              <span><i class="fa-regular fa-user"></i> Adele Gonzalez</span>
+              <span><i class="fa-regular fa-calendar"></i> 18th Sep</span>
+              <span><i class="fa-regular fa-heart"></i> 15</span>
+              <span><i class="fa-regular fa-comment"></i> 05</span>
+            </div>
+            <h3 class="blog-title"><a href="#">STAINLESS PROCESS LINES: INSPECTION BASICS</a></h3>
+            <p class="blog-excerpt">
+              What our engineers check on stainless tanks and pipework at every planned shutdown, and why the small welds matter most.
+            </p>
+          </div>
+        </div>
+
+        <!-- Blog 2 -->
+        <div class="blog-card">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80" alt="Planning a Loading Bay" class="blog-img">
+          <div class="blog-body">
+            <div class="blog-meta">
+              <span><i class="fa-regular fa-user"></i> Adele Gonzalez</span>
+              <span><i class="fa-regular fa-calendar"></i> 2nd Sep</span>
+              <span><i class="fa-regular fa-heart"></i> 12</span>
+              <span><i class="fa-regular fa-comment"></i> 03</span>
+            </div>
+            <h3 class="blog-title"><a href="#">PLANNING A LOADING BAY THAT WORKS ALL YEAR</a></h3>
+            <p class="blog-excerpt">
+              Doors, levellers, lighting and floor drainage: the details that decide whether a warehouse bay copes with winter.
+            </p>
+          </div>
+        </div>
+
+        <!-- Blog 3 -->
+        <div class="blog-card">
+          <img src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=600&q=80" alt="Night Shifts Lighting" class="blog-img">
+          <div class="blog-body">
+            <div class="blog-meta">
+              <span><i class="fa-regular fa-user"></i> Adele Gonzalez</span>
+              <span><i class="fa-regular fa-calendar"></i> 21st Aug</span>
+              <span><i class="fa-regular fa-heart"></i> 21</span>
+              <span><i class="fa-regular fa-comment"></i> 04</span>
+            </div>
+            <h3 class="blog-title"><a href="#">NIGHT SHIFTS: LIGHTING A PLANT FOR SAFE WORK</a></h3>
+            <p class="blog-excerpt">
+              How we survey and relight process areas so night crews can see hazards clearly without glare.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- About Us -->
+        <div class="footer-col">
+          <h4>About Us</h4>
+          <p>
+            Industry is an engineering and construction contractor for manufacturers, warehouses and utilities since 1998.
+          </p>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p>Stay updated with our latest news</p>
+          <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+            <input type="email" placeholder="Enter Email Address" required>
+            <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+          </form>
+          <div id="newsletterAlert" style="display:none; color: var(--primary-yellow); font-size:12px; margin-top:8px;">
+            Thank you for subscribing!
+          </div>
+        </div>
+
+        <!-- Follow Us -->
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <p>Let us be social</p>
+          <div class="footer-social-icons">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="Dribbble"><i class="fa-brands fa-dribbble"></i></a>
+            <a href="#" aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="copyright-wrap">
+        <p>Copyright &copy;2026 All rights reserved | This template is made with love by <a href="#" target="_blank">Colorlib</a></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
